@@ -14,9 +14,41 @@ extension OnRow on Row {
   }
 }
 
+extension OnElevetedButton on ElevatedButton{
+  Widget withLoading(bool isLoading){
+    if(isLoading == false){
+      return this;
+    }
+
+    return ElevatedButton(
+      onPressed: null,
+      child : SizedBox.square(
+        dimension: 24,
+        child: CircularProgressIndicator.adaptive(), 
+      ),
+    );
+  }
+}
+
+extension OnTextButton on TextButton{
+  Widget withLoading(bool isLoading){
+    if(isLoading == false){
+      return this;
+    }
+
+    return TextButton(
+      onPressed: null,
+      child : SizedBox.square(
+        dimension: 24,
+        child: CircularProgressIndicator.adaptive(), 
+      ),
+    );
+  }
+}
+
 // ------- Logic -------
 
-extension NavigatorContext on BuildContext {
+extension OnBuildContext on BuildContext {
   void pop<T extends Object?>([T? result]){
     return Navigator.of(this).pop();
   }
