@@ -49,6 +49,11 @@ extension OnTextButton on TextButton{
 // ------- Logic -------
 
 extension OnBuildContext on BuildContext {
+/// common
+ThemeData get theme => Theme.of(this);
+MediaQueryData get mediaQuery => MediaQuery.of(this);
+NavigatorState get navigator => Navigator.of(this);
+
 /// Screen Size
   bool get isMobile => MediaQuery.of(this).size.width <= 500.0;
 
