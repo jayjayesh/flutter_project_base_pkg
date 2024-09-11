@@ -1,11 +1,3 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:kamai/app_imports.dart';
-import 'package:kamai/common/utils/app_manager.dart';
-import 'package:kamai/common/widgets/app_exit_popup_widget.dart';
-import 'package:kamai/feature/bottom_navigation/current_tab_view.dart';
-import 'package:kamai/feature/home/influencer_profile_page/influencer_profile_page.dart';
-import 'package:kamai/feature/side_menu/side_menu.dart';
-import 'package:kamai/riverpod/state_notifiers/current_tab_view/current_tab_view_state_notifier.dart';
 
 DateTime lastTimeBackButtonWasClicked = DateTime.now();
 
@@ -25,8 +17,8 @@ class _AppExitWillPopScopeWidgetState extends ConsumerState<AppExitWillPopScopeW
           ? null
           : () async {
               final currentTabIndex = ref.read(CurrentTabViewStateNotifier.provider).tabIndex;
-              'Visible Screen RouteName = ${ModalRoute.of(context)?.settings.name}'.logThis();
-              'currentTabIndex RouteName = $currentTabIndex'.logThis();
+              log('Visible Screen RouteName = ${ModalRoute.of(context)?.settings.name}');
+              log('currentTabIndex RouteName = $currentTabIndex');
               if (SideMenu.isDrawerOpen(serviceLocator<AppManager>().currentTabViewScaffoldKey)) {
                 SideMenu.closeSideMenu(serviceLocator<AppManager>().currentTabViewScaffoldKey);
                 return false;
