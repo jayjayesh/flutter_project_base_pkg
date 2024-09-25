@@ -1,4 +1,4 @@
-
+/*
 DateTime lastTimeBackButtonWasClicked = DateTime.now();
 
 class AppExitWillPopScopeWidget extends ConsumerStatefulWidget {
@@ -48,3 +48,5 @@ class _AppExitWillPopScopeWidgetState extends ConsumerState<AppExitWillPopScopeW
     );
   }
 }
+
+*/

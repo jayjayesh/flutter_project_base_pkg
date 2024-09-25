@@ -4,10 +4,13 @@ library flutter_project_base;
 ///
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
 import 'dart:async';
 import 'dart:developer' as dev;
 import 'package:url_launcher/url_launcher.dart';
+import "package:flutter_svg/flutter_svg.dart";  
+
 
 ///
 ///

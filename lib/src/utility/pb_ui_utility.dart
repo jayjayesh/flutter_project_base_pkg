@@ -1,4 +1,3 @@
-import "package:flutter_svg/flutter_svg.dart";  
 part of flutter_project_base;
 
 class PBUIUtility {
@@ -35,19 +34,32 @@ class PBUIUtility {
   ///   ]);
   ///   runApp(MyApp());  
   /// }
+  /// 
   /// ----------------------------------
+  /// 
+  /// Use these tips:
+  /// 
+  /// If you have 100s of SVG for project it will significantly increase your app start time
+  /// 
+  /// Lazy Loading:
+  /// Instead of preloading all 200+ SVGs at startup, consider lazy loading only the assets that are required initially (e.g., for the first screen).
+  /// Preload other assets asynchronously in the background as needed, without blocking the app’s startup.
+  /// 
+  /// Prioritized Preloading:
+  /// You can prioritize preloading only the most critical assets (like those needed for the initial view) and delay the rest until after the app has started.
+  /// 
+  /// Preload in Background:
+  /// Preload assets during idle moments or after the app has started to ensure it doesn’t block the UI during startup.
   ///
+  /// 
   Future<void> preloadSVGFiles(List<String> svgPaths) async{
-    for(final svg in svgPaths){
-      final svgLoader = SvgAssetsLoader(svg);
-      await svg.catch.putIfAbsent(
+    for(final svgFilePath in svgPaths){
+      final svgLoader = SvgAssetLoader(svgFilePath);
+      await svg.cache.putIfAbsent(
         svgLoader.cacheKey(null),
         () => svgLoader.loadBytes(null),
       );
     }
-    return Future.wait(svgPaths.map((path) async {
-      await precachePicture(ExactAssetPicture(AssetName(path)), null);
-    }));
   }
 
 }
